@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLB WINTER CITY · 26FW 다운 매출 활성화 프로젝트 v2</title>
+<style>
+@font-face{font-family:Pretendard;src:url("assets/font/pretendard-subset.woff2") format("woff2-variations"),url("assets/font/pretendard-subset.woff2") format("woff2");font-weight:100 900;font-display:swap}
+:root{
+  --w:#fff;--panel:#f6f6f7;--panel2:#f1f1f3;--line:#e7e7ea;--line2:#d8d8dc;
+  --ink:#111113;--ink2:#1a1a1e;--tx2:#5f5f66;--tx3:#919198;
+  /* WINTER CITY 키컬러 — 유관부서 공유용 PPT 실측 */
+  --orange:#789AC7;      /* 포인트 (다크 박스 라벨·막대·아이콘) */
+  --orange2:#BCD4F2;     /* 다크 박스 안 강조 — #142036 위 10.7:1 */
+  --orange-dark:#3F67A3; /* 흰 배경 위 텍스트 — 5.7:1 */
+  --orangebg:#EEF4FC;    /* 아주 연한 배경 */
+  --band:#CCE0F8;        /* 템플릿 밴드 */
+  --box:#142036;         /* 다크 박스 — 윈터 네이비 */
+  --max:1320px;--ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;color:var(--ink);background:#fff;letter-spacing:-.025em;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover;background:var(--panel)}
+b{font-weight:900}
+mark{background:linear-gradient(transparent 56%,#d9e7fa 0);color:inherit;padding:0 2px}
+.wrap{max-width:var(--max);margin:auto;padding:0 34px 100px}
+
+/* ===== header ===== */
+.progress{position:fixed;z-index:300;top:0;left:0;width:100%;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left}
+.header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header-in{max-width:var(--max);margin:auto;padding:13px 34px;display:flex;align-items:center;gap:14px}
+.header .logo{width:62px;height:auto;background:none}
+.header-title{font-size:15px;font-weight:900;letter-spacing:-.04em;white-space:nowrap}
+.header-sub{font-size:9.5px;font-weight:800;color:var(--tx3);letter-spacing:.14em;margin-top:3px;white-space:nowrap}
+.tabs{display:flex;gap:7px;margin-left:auto;overflow-x:auto;scrollbar-width:none;max-width:60vw}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:1px solid var(--line2);background:#fff;color:var(--tx2);border-radius:28px;padding:9px 14px;font-size:10.5px;font-weight:850;white-space:nowrap;text-decoration:none;transition:.2s var(--ease)}
+.tab:hover{border-color:#bfbfc5;color:var(--ink)}
+.tab.active{border-color:var(--box);background:var(--box);color:#fff}
+
+/* ===== cover ===== */
+.cover{margin-top:28px;background:var(--box);color:#fff;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1.15fr .85fr;min-height:560px;position:relative}
+.cover:after{content:"";position:absolute;width:420px;height:420px;left:38%;top:-180px;border-radius:50%;background:radial-gradient(circle,rgba(120,154,199,.35),transparent 68%);pointer-events:none}
+.cover-l{padding:54px 48px 44px;display:flex;flex-direction:column;position:relative;z-index:1}
+.cover .k{font-size:11px;font-weight:850;letter-spacing:.2em;color:var(--orange2)}
+.cover h1{font-size:46px;font-weight:950;line-height:1.16;letter-spacing:-.055em;margin-top:22px}
+.cover h1 em{font-style:normal;color:var(--orange2)}
+.cover .lead{font-size:14.5px;line-height:1.75;color:rgba(255,255,255,.7);margin-top:20px;max-width:560px}
+.cover .lead b{color:#fff}
+.cover .proj{display:inline-flex;align-items:center;gap:10px;margin-top:26px;border:1px solid rgba(188,212,242,.5);border-radius:28px;padding:9px 16px;font-size:12px;font-weight:850;letter-spacing:.06em;color:#fff;width:max-content;max-width:100%}
+.cover .proj i{width:7px;height:7px;border-radius:50%;background:var(--orange2);flex:none}
+.cover-meta{margin-top:auto;padding-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.14)}
+.cover-meta div{padding:16px 14px 0 0}
+.cover-meta .a{font-size:9.5px;font-weight:850;letter-spacing:.14em;color:var(--orange)}
+.cover-meta .b{font-size:15px;font-weight:900;margin-top:6px;letter-spacing:-.04em}
+.cover-r{position:relative;min-height:420px}
+.cover-r img{position:absolute;inset:0;object-position:center 18%}
+.cover-r .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 18px;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#fff;background:linear-gradient(transparent,rgba(20,32,54,.85))}
+
+/* ===== section ===== */
+.section{padding:56px 0 14px}
+.section+.section{border-top:1px solid var(--line);margin-top:46px}
+.sec-k{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:900;letter-spacing:.18em;color:var(--orange-dark)}
+.sec-k .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--box);color:#fff;font-size:10.5px;letter-spacing:0}
+h2{font-size:34px;font-weight:950;line-height:1.18;letter-spacing:-.055em;margin-top:14px}
+h2 em{font-style:normal;color:var(--orange-dark)}
+.sec-lead{font-size:14px;line-height:1.7;color:var(--tx2);margin-top:12px;max-width:900px;font-weight:650}
+.sub{margin-top:44px}
+.sub-h{display:flex;align-items:baseline;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:18px}
+.sub-h .t{font-size:20px;font-weight:930;letter-spacing:-.045em}
+.sub-h .e{font-size:10px;font-weight:850;letter-spacing:.16em;color:var(--tx3)}
+.sub-h .d{margin-left:auto;font-size:11.5px;font-weight:800;color:var(--orange-dark);white-space:nowrap}
+.lbl{font-size:9.5px;font-weight:900;letter-spacing:.16em;color:var(--orange-dark)}
+
+/* ===== hero ===== */
+.hero{background:var(--box);color:#fff;border-radius:14px;padding:32px 34px;display:grid;grid-template-columns:1.25fr .75fr;gap:32px;align-items:end;overflow:hidden;position:relative;margin-top:26px}
+.hero:after{content:"";position:absolute;width:300px;height:300px;right:-80px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(120,154,199,.32),transparent 68%)}
+.hero-k{font-size:11px;font-weight:850;letter-spacing:.18em;color:var(--orange2)}
+.hero-title{font-size:30px;font-weight:950;line-height:1.22;letter-spacing:-.05em;margin-top:12px}
+.hero-title em{font-style:normal;color:var(--orange2)}
+.hero-copy{font-size:13px;line-height:1.7;color:rgba(255,255,255,.66);margin-top:12px}
+.hero-result{border-left:1px solid rgba(255,255,255,.18);padding-left:28px;position:relative;z-index:1}
+.hero-result .r{display:flex;gap:12px;align-items:baseline;padding:8px 0;border-top:1px solid rgba(255,255,255,.1)}
+.hero-result .r:first-child{border-top:0}
+.hero-result .a{font-size:9.5px;font-weight:900;letter-spacing:.12em;color:var(--orange);width:74px;flex:none}
+.hero-result .b{font-size:13px;font-weight:800;color:#fff}
+
+/* ===== metrics ===== */
+.metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:22px}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+.metric .k{font-size:10px;font-weight:850;letter-spacing:.1em;color:var(--tx3)}
+.metric .v{font-size:25px;font-weight:950;letter-spacing:-.05em;margin-top:6px}
+.metric .s{font-size:11px;font-weight:650;color:var(--tx2);margin-top:6px;line-height:1.5}
+.metric.hi{background:var(--box);color:#fff;border-color:var(--box)}
+.metric.hi .v{color:var(--orange2)}
+.metric.hi .k,.metric.hi .s{color:rgba(255,255,255,.6)}
+.tbd{display:inline-block;margin-left:6px;padding:2px 7px;border-radius:10px;font-size:9.5px;font-weight:900;letter-spacing:.06em;background:#ffe4e6;color:#d1001f;vertical-align:middle}
+.metric.hi .tbd{background:rgba(255,255,255,.14);color:#ffb3bd}
+
+/* ===== cards & grids ===== */
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.card{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;transition:.3s var(--ease);display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(17,17,19,.08);border-color:var(--line2)}
+.card .ph{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--panel)}
+.card .ph.tall{aspect-ratio:3/4}
+.card .ph.wide{aspect-ratio:16/9}
+.card .ph img{transition:transform .5s var(--ease)}
+.card:hover .ph img{transform:scale(1.04)}
+.card .bd{padding:15px 16px 17px;flex:1}
+.card .d{font-size:10px;font-weight:900;letter-spacing:.1em;color:var(--orange-dark)}
+.card .t{font-size:15.5px;font-weight:930;letter-spacing:-.035em;margin-top:5px;line-height:1.35}
+.card .x{font-size:12px;font-weight:650;color:var(--tx2);line-height:1.62;margin-top:6px}
+.card.pick{box-shadow:inset 0 3px 0 var(--orange);border-color:var(--band)}
+.card.pick .bd{background:var(--orangebg)}
+.chip{position:absolute;left:10px;top:10px;background:rgba(20,32,54,.82);color:#fff;font-size:9.5px;font-weight:850;letter-spacing:.08em;padding:5px 9px;border-radius:20px}
+.panel{background:var(--panel);border-radius:12px;padding:20px 22px}
+.panel.blue{background:var(--orangebg);border:1px solid var(--band)}
+
+/* ===== AI insight ===== */
+.ai{background:var(--box);color:#fff;border-radius:14px;padding:26px 28px 22px;margin-top:22px;position:relative;overflow:hidden}
+.ai:after{content:"";position:absolute;width:260px;height:260px;right:-70px;top:-110px;border-radius:50%;background:radial-gradient(circle,rgba(120,154,199,.3),transparent 68%)}
+.ai .k{font-size:9.5px;font-weight:900;letter-spacing:.18em;color:var(--orange)}
+.ai .h{font-size:20px;font-weight:930;letter-spacing:-.045em;margin-top:9px;line-height:1.4;position:relative;z-index:1}
+.ai .h em{font-style:normal;color:var(--orange2)}
+.ai .rows{margin-top:16px;display:grid;gap:9px;position:relative;z-index:1}
+.ai .r{display:grid;grid-template-columns:112px 1fr;gap:14px;padding-top:9px;border-top:1px solid rgba(255,255,255,.1)}
+.ai .a{font-size:9.5px;font-weight:900;letter-spacing:.12em;color:var(--orange2);padding-top:3px}
+.ai .b{font-size:12.5px;font-weight:700;color:rgba(255,255,255,.74);line-height:1.7}
+.ai .b b{color:#fff}
+.ai .c{margin-top:16px;padding-top:13px;border-top:1px solid rgba(255,255,255,.14);font-size:13px;font-weight:850;color:var(--orange2);position:relative;z-index:1;padding-left:14px;border-left:0}
+.ai .c:before{content:"▸ "}
+
+/* ===== banner (결론 구간) ===== */
+.bnr{position:relative;overflow:hidden;background:var(--box);color:#fff;border-radius:12px;padding:20px 26px 20px 34px;margin-top:20px;display:flex;align-items:center;gap:18px}
+.bnr::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--orange2);transform:scaleY(0);transform-origin:50% 0;transition:transform .65s var(--ease) .2s}
+.bnr.in::before{transform:scaleY(1)}
+.bnr .k{font-size:9.5px;font-weight:900;letter-spacing:.16em;color:var(--orange2);flex:none}
+.bnr .v{font-size:16px;font-weight:900;letter-spacing:-.04em;line-height:1.5}
+.bnr .v em{font-style:normal;color:var(--orange2)}
+
+/* ===== equation ===== */
+.eq{display:flex;align-items:stretch;gap:10px;margin-top:22px;flex-wrap:wrap}
+.eq .it{flex:1 1 150px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 16px 15px}
+.eq .it .a{font-size:9.5px;font-weight:900;letter-spacing:.14em;color:var(--orange-dark)}
+.eq .it .b{font-size:16px;font-weight:930;letter-spacing:-.04em;margin-top:6px;line-height:1.3}
+.eq .it .c{font-size:11px;font-weight:650;color:var(--tx2);margin-top:5px;line-height:1.5}
+.eq .op{display:grid;place-items:center;font-size:22px;font-weight:900;color:var(--orange);flex:none;width:18px}
+.eq .res{flex:1.25 1 190px;background:var(--box);color:#fff;border-color:var(--box);box-shadow:inset 0 0 0 2px rgba(188,212,242,.45)}
+.eq .res .a{color:var(--orange2)}.eq .res .c{color:rgba(255,255,255,.66)}
+
+/* ===== AS-IS / TO-BE ===== */
+.asis{display:grid;grid-template-columns:1fr 54px 1fr;gap:0;align-items:stretch;margin-top:22px}
+.pbox{border-radius:12px;padding:22px 24px;background:var(--panel);border:1px solid var(--line)}
+.pbox.b{background:var(--box);color:#fff;border-color:var(--box)}
+.pbox .k{font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--tx3)}
+.pbox.b .k{color:var(--orange2)}
+.pbox .t{font-size:19px;font-weight:930;letter-spacing:-.045em;margin-top:8px;line-height:1.35}
+.pbox ul{list-style:none;margin-top:12px;display:grid;gap:7px}
+.pbox li{font-size:12.5px;font-weight:700;color:var(--tx2);padding-left:14px;position:relative;line-height:1.55}
+.pbox li:before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--line2)}
+.pbox.b li{color:rgba(255,255,255,.76)}
+.pbox.b li:before{background:var(--orange2)}
+.arw{display:grid;place-items:center;color:var(--orange-dark);font-size:24px;font-weight:900}
+
+/* ===== flow ===== */
+.flow{display:grid;gap:8px;margin-top:20px}
+.flow.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.flow.c6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.fcard{background:var(--panel);border-radius:11px;padding:15px 15px 16px;position:relative}
+.fcard .n{font-size:10px;font-weight:900;letter-spacing:.12em;color:var(--orange-dark)}
+.fcard .t{font-size:14.5px;font-weight:930;letter-spacing:-.04em;margin-top:5px;line-height:1.3}
+.fcard .x{font-size:11.5px;font-weight:650;color:var(--tx2);line-height:1.55;margin-top:6px}
+.fcard.last{background:var(--box);color:#fff;box-shadow:0 0 0 3px rgba(120,154,199,.3)}
+.fcard.last .n{color:var(--orange2)}.fcard.last .x{color:rgba(255,255,255,.7)}
+.fcard:not(:last-child):after{content:"›";position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:16px;height:16px;border-radius:50%;background:#fff;color:var(--orange-dark);font-weight:900;font-size:14px;display:grid;place-items:center;line-height:1;z-index:1;box-shadow:0 0 0 1px var(--line)}
+
+/* ===== phase (사전/행사/사후) ===== */
+.phase{display:grid;grid-template-columns:1fr 1.2fr .9fr;gap:12px;margin-top:22px}
+.ph-col{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ph-hd{padding:16px 18px;background:var(--panel)}
+.ph-col.main .ph-hd{background:var(--box);color:#fff}
+.ph-hd .a{font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--orange-dark)}
+.ph-col.main .ph-hd .a{color:var(--orange2)}
+.ph-hd .b{font-size:20px;font-weight:950;letter-spacing:-.05em;margin-top:6px}
+.ph-hd .c{font-size:12px;font-weight:750;color:var(--tx2);margin-top:4px}
+.ph-col.main .ph-hd .c{color:rgba(255,255,255,.7)}
+.ph-list{list-style:none;padding:8px 18px 16px;flex:1}
+.ph-list li{display:grid;grid-template-columns:78px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.ph-list li:last-child{border-bottom:0}
+.ph-list .dt{font-size:11px;font-weight:900;color:var(--orange-dark);letter-spacing:-.02em}
+.ph-list .tx{font-size:12.5px;font-weight:800;line-height:1.45}
+.ph-list .tx small{display:block;font-size:11px;font-weight:650;color:var(--tx2);margin-top:2px}
+.ph-goal{margin:0 18px 16px;border-radius:9px;background:var(--orangebg);padding:10px 12px;font-size:11.5px;font-weight:850;color:var(--orange-dark)}
+
+/* ===== timeline ===== */
+.tl{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin-top:26px}
+.tl:before{content:"";position:absolute;left:8.33%;right:8.33%;top:42px;border-top:1.5px dashed var(--orange)}
+.tl .s{text-align:center;padding:0 6px}
+.tl .act{font-size:10px;font-weight:900;letter-spacing:.12em;color:var(--orange-dark)}
+.tl .nm{font-size:10.5px;font-weight:800;color:var(--tx3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl .dot{width:15px;height:15px;border:2px solid var(--orange);background:#fff;border-radius:50%;margin:8px auto 10px;box-shadow:0 0 0 4px #fff;position:relative}
+.tl .s.pk .dot{background:var(--orange)}
+.tl .dt{font-size:15px;font-weight:950;letter-spacing:-.04em}
+.tl .s.pk .dt{color:var(--orange-dark)}
+.tl .x{font-size:11px;font-weight:700;color:var(--tx2);line-height:1.5;margin-top:5px}
+
+/* ===== mosaic / image grids ===== */
+.mos{display:grid;gap:4px;border-radius:12px;overflow:hidden}
+.mos .c{position:relative;overflow:hidden;min-width:0;min-height:0;background:var(--panel)}
+.mos .cap{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;font-size:10px;font-weight:850;letter-spacing:.04em;color:#fff;background:linear-gradient(transparent,rgba(20,32,54,.78))}
+.pill{display:inline-block;border:1px solid var(--ink);border-radius:20px;padding:5px 12px;font-size:11px;font-weight:850;background:#fff;margin-bottom:8px}
+
+/* ===== case study ===== */
+.case{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.cs{border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.cs-hd{padding:18px 20px 14px}
+.cs-hd .a{font-size:10px;font-weight:900;letter-spacing:.16em;color:var(--orange-dark)}
+.cs-hd .b{font-size:21px;font-weight:950;letter-spacing:-.05em;margin-top:6px}
+.cs-hd .c{font-size:12.5px;font-weight:700;color:var(--tx2);margin-top:6px;line-height:1.6}
+.cs-img{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3px;height:190px}
+.cs-img div{position:relative;overflow:hidden;min-width:0}
+.cs-what{padding:14px 20px 4px}
+.cs-what .r{display:grid;grid-template-columns:66px 1fr;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12px;font-weight:700;line-height:1.5}
+.cs-what .r span:first-child{font-size:10.5px;font-weight:900;color:var(--orange-dark);padding-top:1px}
+.cs-eff{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:14px 20px 20px;margin-top:auto}
+.cs-eff .e{background:var(--panel);border-radius:10px;padding:13px 14px}
+.cs-eff .v{font-size:23px;font-weight:950;letter-spacing:-.05em}
+.cs-eff .e:first-child .v{color:var(--orange-dark)}
+.cs-eff .l{font-size:11.5px;font-weight:850;margin-top:3px}
+.cs-eff .s{font-size:10.5px;font-weight:650;color:var(--tx2);margin-top:2px}
+
+/* ===== bar chart ===== */
+.bars{display:grid;gap:12px;margin-top:14px}
+.bar-r{display:grid;grid-template-columns:150px 1fr 70px;gap:12px;align-items:center}
+.bar-r .l{font-size:12px;font-weight:800;color:var(--tx2)}
+.bar-r .tr{height:26px;background:var(--panel2);border-radius:0 6px 6px 0;overflow:hidden}
+.bar-r .f{height:100%;width:0;background:#c9ccd3;border-radius:0 6px 6px 0;transition:width 1.1s var(--ease)}
+.bar-r .f.a{background:var(--orange)}
+.bar-r .f.t{background:repeating-linear-gradient(-45deg,var(--band) 0 6px,#e3eefb 6px 12px)}
+.bar-r .v{font-size:14px;font-weight:930;letter-spacing:-.04em}
+.bar-r.a .l,.bar-r.a .v{color:var(--ink)}
+.bar-r.a .v{color:var(--orange-dark)}
+
+/* ===== table ===== */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:14px}
+.tbl th{background:var(--panel);font-size:10.5px;font-weight:900;letter-spacing:.06em;color:var(--tx2);padding:11px 12px;text-align:left;border-bottom:1px solid var(--line2)}
+.tbl td{padding:12px 12px;border-bottom:1px solid var(--line);font-weight:700;vertical-align:top;line-height:1.55}
+.tbl td.k{font-weight:900;color:var(--orange-dark);white-space:nowrap}
+.tbl th.m,.tbl td.m{background:var(--orangebg);color:var(--ink)}
+.tbl th.m{background:var(--box);color:#fff}
+.tbl td.m{font-weight:850}
+.tbl .num{text-align:right;white-space:nowrap}
+.tbl tr.tot td{background:var(--panel);font-weight:930;border-bottom:0}
+
+/* ===== KEY TAKEAWAY ===== */
+.kt{margin-top:26px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kt .kc{position:relative;background:var(--panel);border-radius:12px;padding:18px 18px 18px 22px;overflow:hidden}
+.kt .kc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--orange)}
+.kt .kn{font-size:9.5px;font-weight:900;letter-spacing:.16em;color:var(--orange-dark)}
+.kt .kv{font-size:15px;font-weight:930;letter-spacing:-.04em;margin-top:6px;line-height:1.4}
+.kt .ks{font-size:11.5px;font-weight:650;color:var(--tx2);margin-top:6px;line-height:1.55}
+
+.note{margin-top:16px;border:1px dashed var(--line2);border-radius:10px;padding:12px 14px;font-size:11px;font-weight:650;color:var(--tx2);line-height:1.65}
+.note b{color:var(--ink)}
+.note .r{color:#d1001f;font-weight:850}
+.src{font-size:10.5px;font-weight:650;color:var(--tx3);margin-top:10px;line-height:1.6}
+
+/* layout helpers */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
+.split.r{grid-template-columns:.9fr 1.1fr}
+.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}.mt20{margin-top:20px}.mt24{margin-top:24px}
+.kv-list{display:grid;gap:0}
+.kv-list .r{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12.5px;font-weight:700;line-height:1.55}
+.kv-list .r .a{font-size:10.5px;font-weight:900;color:var(--orange-dark);letter-spacing:.04em;padding-top:1px}
+.why{border-radius:12px;background:var(--orangebg);border:1px solid var(--band);padding:18px 20px}
+.why .h{font-size:16px;font-weight:930;letter-spacing:-.04em;line-height:1.45;margin-top:6px}
+.why .x{font-size:12px;font-weight:650;color:var(--tx2);line-height:1.6;margin-top:6px}
+.steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-top:12px}
+.steps div{background:var(--panel);border-radius:9px;padding:11px 10px;font-size:11.5px;font-weight:850;text-align:center;line-height:1.4;display:grid;place-items:center}
+.steps div small{display:block;font-size:9.5px;font-weight:900;color:var(--orange-dark);letter-spacing:.1em;margin-bottom:3px}
+.steps div.hi{background:var(--box);color:#fff}
+.steps div.hi small{color:var(--orange2)}
+.reward{display:grid;gap:6px}
+.reward .r{display:grid;grid-template-columns:56px 1fr;gap:10px;align-items:center;background:var(--panel);border-radius:9px;padding:11px 14px;font-size:13px;font-weight:750}
+.reward .r .a{font-size:11px;font-weight:930;color:var(--orange-dark)}
+.reward .r.hi{background:var(--box);color:#fff}
+.reward .r.hi .a{color:var(--orange2)}
+
+/* ===== motion ===== */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.rv.in{opacity:1;transform:none}
+[data-stagger]>*{opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+[data-stagger].in>*{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv,[data-stagger]>*{transition:none;opacity:1;transform:none}.bar-r .f{transition:none}}
+@media print{
+  .rv,[data-stagger]>*{opacity:1!important;transform:none!important}
+  .bnr::before{transform:scaleY(1)!important}
+  .header{position:static}.progress{display:none!important}
+  .section{break-inside:auto}.card,.ai,.hero,.cs{break-inside:avoid}
+}
+
+/* ===== responsive ===== */
+@media(max-width:1100px){
+  .cover{grid-template-columns:1fr}.cover-r{min-height:460px}
+  .hero{grid-template-columns:1fr}.hero-result{border-left:0;padding-left:0;border-top:1px solid rgba(255,255,255,.18);padding-top:14px}
+  .case{grid-template-columns:1fr}.split,.split.r{grid-template-columns:1fr}
+  .phase{grid-template-columns:1fr}
+}
+@media(max-width:1000px){
+  .metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g5,.flow.c5,.flow.c6{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g4,.kt{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .fcard:not(:last-child):after{display:none}
+  .tabs{max-width:48vw}
+}
+@media(max-width:900px){.header-sub{display:none}}
+@media(max-width:760px){
+  .wrap{padding:0 16px 80px}.header-in{padding:11px 16px}
+  .cover-l{padding:34px 24px}.cover h1{font-size:32px}.cover-meta{grid-template-columns:repeat(2,1fr)}
+  h2{font-size:26px}.hero{padding:24px 22px}.hero-title{font-size:23px}
+  .g3,.g2{grid-template-columns:1fr}
+  .asis{grid-template-columns:1fr}.arw{transform:rotate(90deg);height:44px}
+  .tl{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:22px}.tl:before{display:none}
+  .ai .r{grid-template-columns:1fr;gap:4px}
+  .bar-r{grid-template-columns:96px 1fr 56px}
+  .eq .op{width:100%;height:14px}
+  .header-title{display:none}
+  .tabs{max-width:72vw}
+  .tbl{font-size:11.5px}.tbl-wrap{overflow-x:auto}
+  .sub-h{flex-wrap:wrap}.sub-h .d{margin-left:0;width:100%}
+}
+@media(max-width:560px){
+  .metrics,.g5,.flow.c5,.flow.c6,.g4,.kt,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cs-img{height:150px}.cs-eff{grid-template-columns:1fr 1fr}
+}
+
+/* ===== v2 · cover overlay + tab panes ===== */
+#cover{position:fixed;inset:0;z-index:500;background:#fff;padding:24px;display:flex;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+#cover.off{opacity:0;transform:translateY(-14px);pointer-events:none}
+#cover.gone{display:none}
+#cover .cover{margin:0;flex:1;min-height:0;max-width:1600px;margin:auto;width:100%;height:100%;animation:cin .72s var(--ease) both}
+@keyframes cin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+#cover .cover h1{font-size:clamp(34px,4.4vw,64px)}
+#cover .cover .lead{font-size:clamp(13.5px,1.1vw,16px)}
+.cover-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:28px}
+.enter{border:0;background:var(--orange2);color:var(--box);font-family:inherit;font-size:13px;font-weight:900;letter-spacing:.08em;padding:14px 24px;border-radius:28px;cursor:pointer;transition:.25s var(--ease)}
+.enter span{display:inline-block;transition:transform .25s var(--ease)}
+.enter:hover{background:#fff}.enter:hover span{transform:translateX(4px)}
+.cover-idx{display:flex;flex-wrap:wrap;gap:6px}
+.cover-idx a{font-size:10.5px;font-weight:850;color:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 11px;cursor:pointer;transition:.2s var(--ease)}
+.cover-idx a:hover{color:#fff;border-color:var(--orange2)}
+.home{border:0;background:none;cursor:pointer;padding:0;display:flex}
+.tab{cursor:pointer}
+.pane{display:none}
+.pane.on{display:block;animation:pin .42s var(--ease) both}
+@keyframes pin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.section.pane{border-top:0!important;margin-top:0!important;padding-top:40px}
+.pnav{display:flex;justify-content:space-between;gap:12px;margin-top:48px;padding-top:22px;border-top:1px solid var(--line)}
+.pn{border:1px solid var(--line2);background:#fff;border-radius:12px;padding:12px 18px;font-family:inherit;font-size:14px;font-weight:900;letter-spacing:-.03em;color:var(--ink);cursor:pointer;text-align:left;transition:.25s var(--ease)}
+.pn small{display:block;font-size:9.5px;font-weight:900;letter-spacing:.16em;color:var(--orange-dark);margin-bottom:3px}
+.pn.next{text-align:right;background:var(--box);border-color:var(--box);color:#fff}
+.pn.next small{color:var(--orange2)}
+.pn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,17,19,.1)}
+@media(max-width:1100px){#cover{padding:12px;overflow:auto}#cover .cover{height:auto;min-height:100%}#cover .cover-r{min-height:380px}}
+@media print{#cover{display:none!important}.pane{display:block!important;animation:none!important}.pnav{display:none!important}.section.pane+.section.pane{break-before:page}}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div id="cover">
+<!-- ================= COVER ================= -->
+<div class="cover">
+  <div class="cover-l">
+    <div class="k">MLB 26FW · DOWN SALES ACTIVATION</div>
+    <h1>MLB 26FW<br><em>다운 매출 활성화</em>를 위한<br>대규모 프로젝트</h1>
+    <p class="lead">임팩트 있는 이벤트로 <b>온·오프라인 전 채널에서 MLB 다운이 회자되는 상황</b>을 만들고, 그 관심을 <b>매장과 공식몰의 패딩 구매</b>로 전환한다.</p>
+    <div class="proj"><i></i>PROJECT · MLB WINTER CITY: SAVE KARINA</div>
+    <div class="cover-cta">
+      <button class="enter" data-go="0">REPORT 시작 <span>→</span></button>
+      <div class="cover-idx">
+        <a data-go="0">01 목적</a><a data-go="1">02 전략</a><a data-go="2">03 플랜</a><a data-go="3">04 레퍼런스</a><a data-go="4">05 실행</a><a data-go="5">06 매출</a>
+      </div>
+    </div>
+    <div class="cover-meta">
+      <div><div class="a">KEY ITEM</div><div class="b">MLB 커브패딩</div></div>
+      <div><div class="a">AMBASSADOR</div><div class="b">카리나</div></div>
+      <div><div class="a">PERIOD</div><div class="b">10/12 – 11/29</div></div>
+      <div><div class="a">PEAK</div><div class="b">11/6 – 8 한남</div></div>
+    </div>
+  </div>
+  <div class="cover-r">
+    <img src="assets/img/p1_cover_img01.webp" alt="카리나 26W 화보 · MLB 커브패딩">
+    <div class="cap">KARINA 26W CAMPAIGN · MLB CURVE DOWN</div>
+  </div>
+</div>
+</div>
+
+<header class="header" id="hd">
+  <div class="header-in">
+    <button class="home" data-cover="1" title="표지"><img class="logo" src="assets/img/common_logo.png" alt="MLB"></button>
+    <div>
+      <div class="header-title">MLB WINTER CITY · 26FW DOWN PROJECT</div>
+      <div class="header-sub">C-LEVEL REPORT · 2026.10 · MLB MARKETING</div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <a class="tab" href="#s1">01 · 목적</a>
+      <a class="tab" href="#s2">02 · 전략</a>
+      <a class="tab" href="#s3">03 · 플랜</a>
+      <a class="tab" href="#s4">04 · 레퍼런스</a>
+      <a class="tab" href="#s5">05 · 실행</a>
+      <a class="tab" href="#s6">06 · 매출</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+
+
+<!-- ================= 01 PURPOSE ================= -->
+<section class="section pane" id="s1" data-i="0">
+  <div class="sec-k rv"><span class="n">01</span>PURPOSE · 보고의 목적</div>
+  <h2 class="rv">목적은 하나 — <em>26FW 다운 매출 활성화</em></h2>
+  <p class="sec-lead rv">이번 프로젝트는 행사가 목적이 아니다. 카리나 · WINTER CITY · 한남 팝업은 모두 <b>MLB 커브패딩을 더 많이 팔기 위한 수단</b>이다.</p>
+
+  <div class="metrics" data-stagger>
+    <div class="metric hi"><div class="k">GOAL</div><div class="v">다운 매출 ○○억<span class="tbd">TBD</span></div><div class="s">26FW 다운 카테고리 매출 목표</div></div>
+    <div class="metric"><div class="k">KEY ITEM</div><div class="v">커브패딩</div><div class="s">캠페인 전 접점의 주인공</div></div>
+    <div class="metric"><div class="k">SCALE</div><div class="v">7주 · 전 채널</div><div class="s">10/12 사전 → 11/29 사후</div></div>
+    <div class="metric"><div class="k">REACH</div><div class="v">OOH 8구좌</div><div class="s">한강진역~이태원역 · 랩핑버스 2대</div></div>
+    <div class="metric"><div class="k">VISIT</div><div class="v">최대 2,400명</div><div class="s">팝업 3일 방문 (기획안 시뮬레이션)</div></div>
+  </div>
+
+  <div class="hero rv">
+    <div style="position:relative;z-index:1">
+      <div class="hero-k">PREMISE · 전제</div>
+      <div class="hero-title">다운을 팔려면,<br>먼저 <em>MLB 다운이 회자</em>되어야 한다</div>
+      <div class="hero-copy">MLB 규모의 브랜드가 시즌 다운을 띄우려면 화보 · 매장 이벤트 단위로는 부족하다. 도시 단위의 사건을 만들어 온라인 · 오프라인 전 채널에서 동시에 이야기되게 한다.</div>
+    </div>
+    <div class="hero-result">
+      <div class="r"><span class="a">ONLINE</span><span class="b">화보 · 영상 · 사전 미션 · SNS</span></div>
+      <div class="r"><span class="a">OFFLINE</span><span class="b">한남 OOH · 팝업 · 한남점 · 제휴 16곳</span></div>
+      <div class="r"><span class="a">PEOPLE</span><span class="b">카리나 · 인플 55인 · 매체 40+</span></div>
+      <div class="r"><span class="a">SALES</span><span class="b">한남점 · 공식몰 다운 구매</span></div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">모든 장치는 커브패딩으로 수렴한다</span><span class="e">DOWN EVERYWHERE</span></div>
+    <div class="split">
+      <div class="mos rv" style="grid-template-columns:1.1fr 1fr;grid-template-rows:200px 200px">
+        <div class="c" style="grid-row:span 2"><img src="assets/img/p1_down_img01.webp" alt="CURVE DOWN ZONE" style="object-position:center 40%"><div class="cap">팝업 CURVE DOWN ZONE</div></div>
+        <div class="c"><img src="assets/img/p1_down_img02.webp" alt="카리나 메인 영상" style="object-position:center 25%"><div class="cap">메인 영상 · 패딩 착장</div></div>
+        <div class="c"><img src="assets/img/p1_cover_img01.webp" alt="카리나 화보" style="object-position:center 30%"><div class="cap">카리나 26W 화보</div></div>
+      </div>
+      <div class="tbl-wrap rv">
+        <table class="tbl" style="margin-top:0">
+          <tr><th>접점</th><th>커브패딩이 등장하는 방식</th></tr>
+          <tr><td class="k">콘텐츠</td><td>카리나 화보 · 티저 · 메인 영상 전 착장 노출</td></tr>
+          <tr><td class="k">미션</td><td>사전 미션의 구출 아이템 = <b>'MLB 패딩'</b></td></tr>
+          <tr><td class="k">공간</td><td>팝업 CURVE DOWN ZONE · 한남점 쇼룸에서 직접 착용</td></tr>
+          <tr><td class="k">리워드</td><td>럭키드로우 <b>1등 = MLB 패딩</b></td></tr>
+          <tr><td class="k">구매</td><td>한남점 10% 쿠폰 · 공식몰 10% 쿠폰 → 다운 구매</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="g3 mt16" data-stagger>
+      <div class="why"><div class="lbl">SEASON</div><div class="h">다운 성수기 직전 선점</div><div class="x">구매가 몰리기 전 10~11월에 인지와 착용 경험을 먼저 확보한다.</div></div>
+      <div class="why"><div class="lbl">CELEB</div><div class="h">카리나 착장 = 수요 견인</div><div class="x">25FW 카리나 에디션 판매 당시 한남점 최대 대기 <b>150명</b>.</div></div>
+      <div class="why"><div class="lbl">MASS</div><div class="h">팬덤을 넘어 대중으로</div><div class="x">누구나 즐기는 한남 행사로 'MLB = 겨울 다운'을 각인한다.</div></div>
+    </div>
+  </div>
+
+  <div class="ai rv">
+    <div class="k">◆ AI INSIGHT</div>
+    <div class="h">이번 캠페인의 KPI는 화제성이 아니라 <em>다운 매출</em> — 화제성은 매출로 가는 선행 지표다</div>
+    <div class="rows">
+      <div class="r"><div class="a">구조</div><div class="b">콘텐츠 · 미션 · 공간 · 리워드 · 구매 <b>5개 접점 전부에 커브패딩</b>이 등장 — 어느 경로로 들어와도 제품을 만난다</div></div>
+      <div class="r"><div class="a">타이밍</div><div class="b">정점(11/6~8)을 다운 구매가 본격화되는 시점 직전에 배치 — <b>인지 → 구매 리드타임</b>을 확보</div></div>
+      <div class="r"><div class="a">전환 장치</div><div class="b">온라인 10% 쿠폰(사전 미션) + 오프라인 10% 쿠폰(한남점) — <b>관심이 생긴 순간 바로 쓸 수 있는 혜택</b>을 쥐여준다</div></div>
+    </div>
+    <div class="c">"카리나를 구하는 행동 = MLB 커브패딩을 경험하는 행동"으로 설계한 다운 세일즈 프로젝트</div>
+  </div>
+
+  <nav class="pnav"><button class="pn prev" data-cover="1"><small>COVER</small>표지로</button><button class="pn next" data-go="1"><small>NEXT</small>02 · 전략</button></nav>
+</section>
+
+<!-- ================= 02 STRATEGY ================= -->
+<section class="section pane" id="s2" data-i="1">
+  <div class="sec-k rv"><span class="n">02</span>STRATEGY · 왜 이 규모, 왜 카리나 × 세계관</div>
+  <h2 class="rv">MLB 규모에 맞는 <em>임팩트</em>가 필요하다</h2>
+  <p class="sec-lead rv">시즌 화보와 단일 매장 이벤트는 '노출'은 만들지만 '회자'는 만들지 못한다. 도시를 무대로 한 사건이어야 전 채널에서 이야기가 된다.</p>
+
+  <div class="asis rv">
+    <div class="pbox">
+      <div class="k">AS-IS · 일반적인 시즌 런칭</div>
+      <div class="t">보여주고 끝나는 캠페인</div>
+      <ul><li>화보 공개 → 매장 진열 → 할인 프로모션</li><li>노출은 있지만 대화가 생기지 않는다</li><li>온라인 · 오프라인이 따로 움직인다</li></ul>
+    </div>
+    <div class="arw"><span>→</span></div>
+    <div class="pbox b">
+      <div class="k">TO-BE · MLB WINTER CITY</div>
+      <div class="t">도시 전체가 겪는 하나의 사건</div>
+      <ul><li>사전 3주 · 정점 3일 · 사후 2주 — 이슈가 끊기지 않는 서사</li><li>한남동 일대를 MLB 다운 비주얼과 사람으로 점령</li><li>모든 참여의 끝이 매장 · 공식몰 구매로 연결</li></ul>
+    </div>
+  </div>
+
+  <div class="eq" data-stagger>
+    <div class="it"><div class="a">CELEB</div><div class="b">앰버서더 카리나</div><div class="c">즉각적인 관심과 화제성</div></div>
+    <div class="op">+</div>
+    <div class="it"><div class="a">WORLDVIEW</div><div class="b">WINTER CITY 세계관</div><div class="c">사전~사후를 잇는 지속 서사</div></div>
+    <div class="op">+</div>
+    <div class="it"><div class="a">PRODUCT</div><div class="b">MLB 커브패딩</div><div class="c">이야기의 해답 = 제품</div></div>
+    <div class="op">=</div>
+    <div class="it res"><div class="a">RESULT</div><div class="b">전 채널에서 회자되는 MLB 다운</div><div class="c">관심 → 체험 → 구매</div></div>
+  </div>
+
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">WINTER CITY: SAVE KARINA</span><span class="e">STORY</span></div>
+    <div class="split">
+      <div class="mos rv" style="grid-template-columns:1fr 1fr;grid-template-rows:250px 150px">
+        <div class="c" style="grid-column:span 2"><img src="assets/img/p2_world_img01.webp" alt="WINTER CITY 티저" style="object-position:center 40%"><div class="cap">얼어붙은 WINTER CITY 속 카리나</div></div>
+        <div class="c"><img src="assets/img/p2_world_img03.webp" alt="얼어붙은 도시"><div class="cap">이상 한파 · 얼어붙은 한남</div></div>
+        <div class="c"><img src="assets/img/p2_world_img02.webp" alt="카리나 키 비주얼" style="object-position:center 20%"><div class="cap">KEY VISUAL</div></div>
+      </div>
+      <div class="rv">
+        <div class="flow" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:0">
+          <div class="fcard"><div class="n">사건</div><div class="t">한남동 이상 한파</div><div class="x">원인 모를 한파로 도시가 얼어붙는다</div></div>
+          <div class="fcard"><div class="n">고립</div><div class="t">카리나가 갇혔다</div><div class="x">카리나가 WINTER CITY에 고립된다</div></div>
+          <div class="fcard last"><div class="n">구출</div><div class="t">RESCUE TEAM 출동</div><div class="x">고객이 구조대가 되어 카리나를 구한다</div></div>
+        </div>
+        <div class="panel blue mt12">
+          <div class="lbl">구출의 열쇠</div>
+          <div style="font-size:19px;font-weight:930;letter-spacing:-.045em;margin-top:6px">극한의 한파를 뚫는 단 하나의 방법 = <span style="color:var(--orange-dark)">MLB 패딩</span></div>
+          <div class="x" style="font-size:12.5px;font-weight:650;color:var(--tx2);margin-top:8px;line-height:1.65">WINTER CITY 곳곳에 흩어진 MLB 패딩을 찾아 카리나를 구출한다 — 세계관의 해답이 곧 제품이다.</div>
+        </div>
+        <div class="kv-list mt12">
+          <div class="r"><span class="a">고객</span><span>RESCUE TEAM — RESCUE ID 발급 · 미션 수행</span></div>
+          <div class="r"><span class="a">무대</span><span>얼어붙은 한남 = OOH · 팝업 · 한남점 · 제휴처</span></div>
+          <div class="r"><span class="a">주인공</span><span>카리나 — 화보 · 영상 · 11/6 방문 행사</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai rv">
+    <div class="k">◆ AI INSIGHT</div>
+    <div class="h">카리나는 <em>관심</em>을, 세계관은 <em>지속</em>을, 패딩은 <em>구매</em>를 맡는다</div>
+    <div class="rows">
+      <div class="r"><div class="a">카리나</div><div class="b">공개 즉시 반응이 오는 앰버서더 — 화보 · 행사 · 인플 콘텐츠의 <b>최초 점화</b></div></div>
+      <div class="r"><div class="a">세계관</div><div class="b">셀럽 이벤트는 하루로 끝난다 — '구출 서사'가 <b>7주 동안 다음 화를 기다리게</b> 만든다</div></div>
+      <div class="r"><div class="a">제품</div><div class="b">스토리의 해답을 패딩으로 정해 <b>참여 = 제품 경험</b>이 되도록 설계</div></div>
+    </div>
+    <div class="c">세계관은 보유한 것이 아니라 — 다운을 팔기 위해 만들어낸 장치</div>
+  </div>
+
+  <nav class="pnav"><button class="pn prev" data-go="0"><small>PREV</small>01 · 목적</button><button class="pn next" data-go="2"><small>NEXT</small>03 · 플랜</button></nav>
+</section>
+
+<!-- ================= 03 PLAN ================= -->
+<section class="section pane" id="s3" data-i="2">
+  <div class="sec-k rv"><span class="n">03</span>PLAN · 이렇게 진행한다</div>
+  <h2 class="rv">사전부터 사후까지, <em>끊기지 않는 이슈</em></h2>
+  <p class="sec-lead rv">사전엔 기대감과 온라인 유입을, 행사 기간엔 한남동 점령과 체험을, 사후엔 재확산을 — 각 단계의 끝은 매장과 공식몰이다.</p>
+
+  <div class="phase" data-stagger>
+    <div class="ph-col">
+      <div class="ph-hd"><div class="a">PRE · 10/12 – 11/5</div><div class="b">사전 · 기대감 증폭</div><div class="c">온라인 유입 + 바이럴</div></div>
+      <ul class="ph-list">
+        <li><span class="dt">10/12~</span><span class="tx">프리퀄 SNS<small>@frozenhannam — 이상 한파 사건만 먼저</small></span></li>
+        <li><span class="dt">10/26</span><span class="tx">카리나 화보 · 티저 · OOH 1차<small>카리나 × 커브패딩 첫 공개</small></span></li>
+        <li><span class="dt">10/29~</span><span class="tx">게이미피케이션 사전 미션<small>공식몰 회원 전용 · 전원 10% 쿠폰</small></span></li>
+        <li><span class="dt">10/29~</span><span class="tx">RSVP KIT 바이럴<small>카리나 · 매거진 · 인플 시딩</small></span></li>
+        <li><span class="dt">11/6 14시</span><span class="tx">게릴라 퍼포먼스<small>RESCUE TEAM 8인 한남 행진</small></span></li>
+      </ul>
+      <div class="ph-goal">GOAL · 공식몰 유입 · 쿠폰 보유 고객 확보</div>
+    </div>
+    <div class="ph-col main">
+      <div class="ph-hd"><div class="a">EVENT · 11/2 – 11/8</div><div class="b">행사 · 한남동 점령</div><div class="c">MLB 다운 비주얼 + 사람으로 일대를 덮는다</div></div>
+      <ul class="ph-list">
+        <li><span class="dt">11/2~</span><span class="tx">OOH 2차 · 제휴 16곳 ON<small>가로등 배너 · QR 포스터 · 상권 동참</small></span></li>
+        <li><span class="dt">11/6 17시</span><span class="tx">카리나 방문 행사<small>포토콜 기자 30~40 · 매거진 촬영</small></span></li>
+        <li><span class="dt">11/6~7</span><span class="tx">인플루언서 55인 방문<small>현장 콘텐츠 업로드</small></span></li>
+        <li><span class="dt">11/6~8</span><span class="tx">랩핑버스 2대<small>움직이는 OOH</small></span></li>
+        <li><span class="dt">11/7~8</span><span class="tx">팝업 퍼블릭 운영<small>최대 2,400명 · 커브패딩 체험 · 리워드</small></span></li>
+      </ul>
+      <div class="ph-goal">GOAL · 최대 방문 · 체험 → 한남점 구매 전환</div>
+    </div>
+    <div class="ph-col">
+      <div class="ph-hd"><div class="a">POST · 11/13 –</div><div class="b">사후 · 재확산</div><div class="c">판매 피크까지 노출 유지</div></div>
+      <ul class="ph-list">
+        <li><span class="dt">11/7~</span><span class="tx">인플 · 매거진 콘텐츠<small>방문기 · 카리나 착장 확산</small></span></li>
+        <li><span class="dt">11/13</span><span class="tx">카리나 행사 콘텐츠<small>포토콜 · 라운딩 촬영분 (TBD)</small></span></li>
+        <li><span class="dt">11/19</span><span class="tx">카리나 윈터 2차 화보<small>커브패딩 재노출</small></span></li>
+        <li><span class="dt">11/19~29</span><span class="tx">OOH 확장 (안)<small>강남 또는 성수</small></span></li>
+      </ul>
+      <div class="ph-goal">GOAL · 두 번째 구매 트리거</div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">5막 스토리 타임라인</span><span class="e">TIMELINE</span></div>
+    <div class="tl" data-stagger>
+      <div class="s"><div class="act">1막</div><div class="nm">FROZEN HANNAM</div><div class="dot"></div><div class="dt">10/12~</div><div class="x">한남동 이상 현상 · 프리퀄</div></div>
+      <div class="s"><div class="act">2막</div><div class="nm">THE FREEZE</div><div class="dot"></div><div class="dt">10/26</div><div class="x">카리나 등장 · 화보 · OOH 1차</div></div>
+      <div class="s"><div class="act">3막</div><div class="nm">SIGNAL FROM KARINA</div><div class="dot"></div><div class="dt">10/29~</div><div class="x">카리나 고립 · 사전 미션</div></div>
+      <div class="s"><div class="act">4막</div><div class="nm">SAVE KARINA</div><div class="dot"></div><div class="dt">11/2~</div><div class="x">RESCUE TEAM · OOH 2차 · 제휴</div></div>
+      <div class="s pk"><div class="act">5막</div><div class="nm">KARINA IN THE WINTER CITY</div><div class="dot"></div><div class="dt">11/6~8</div><div class="x">카리나 행사 · 팝업 · 구출 엔딩</div></div>
+      <div class="s"><div class="act">AFTER</div><div class="nm">사후 확산</div><div class="dot"></div><div class="dt">11/13~</div><div class="x">행사 콘텐츠 · 2차 화보</div></div>
+    </div>
+  </div>
+
+  <div class="flow c5" data-stagger style="margin-top:30px">
+    <div class="fcard"><div class="n">01 인지</div><div class="t">화보 · OOH · 매체</div><div class="x">한남 OOH 8구좌 · 매체 40+</div></div>
+    <div class="fcard"><div class="n">02 유입</div><div class="t">사전 미션 · 공식몰</div><div class="x">RESCUE ID · 10% 쿠폰</div></div>
+    <div class="fcard"><div class="n">03 방문</div><div class="t">한남 팝업 · 한남점</div><div class="x">최대 2,400명</div></div>
+    <div class="fcard"><div class="n">04 체험</div><div class="t">커브패딩 착용 · 미션</div><div class="x">CURVE DOWN ZONE</div></div>
+    <div class="fcard last"><div class="n">05 구매</div><div class="t">다운 매출</div><div class="x">한남점 · 공식몰 · 쿠폰</div></div>
+  </div>
+
+  <nav class="pnav"><button class="pn prev" data-go="1"><small>PREV</small>02 · 전략</button><button class="pn next" data-go="3"><small>NEXT</small>04 · 레퍼런스</button></nav>
+</section>
+
+<!-- ================= 04 REFERENCE ================= -->
+<section class="section pane" id="s4" data-i="3">
+  <div class="sec-k rv"><span class="n">04</span>REFERENCE · 검증된 공식</div>
+  <h2 class="rv">도시를 덮으면, <em>주변 매장 매출</em>이 오른다</h2>
+  <p class="sec-lead rv">BTS와 현대카드 다빈치모텔은 공연장 · 행사장 하나가 아니라 일대 전체를 하나의 세계관으로 덮었다. 효과는 화제성보다 <b>사람이 머문 거리의 매장 매출</b>에서 먼저 확인됐다.</p>
+
+  <div class="case">
+    <div class="cs rv">
+      <div class="cs-hd"><div class="a">CASE 1 · 2026.3.20 – 4.19</div><div class="b">BTS THE CITY ARIRANG SEOUL</div><div class="c">앨범 한 장을 '서울이라는 도시의 사건'으로 — 한 달간 서울을 레드로 덮었다.</div></div>
+      <div class="cs-img">
+        <div><img src="assets/img/p4_bts_img01.webp" alt="숭례문 미디어파사드"></div>
+        <div><img src="assets/img/p4_bts_img04.webp" alt="헤지스 명동 보라 매장"></div>
+        <div><img src="assets/img/p4_bts_img05.webp" alt="CU 광화문"></div>
+      </div>
+      <div class="cs-what">
+        <div class="r"><span>랜드마크</span><span>숭례문 · N서울타워 등 15곳 레드 동시 점등</span></div>
+        <div class="r"><span>동선</span><span>광화문 · DDP · 여의도 거점 + 스탬프 랠리</span></div>
+        <div class="r"><span>상권</span><span>백화점 · 편의점 · 패션 · 카페 파트너 15곳+</span></div>
+        <div class="r"><span>정점</span><span>광화문 무료 공연 → 넷플릭스 190개국 생중계</span></div>
+      </div>
+      <div class="cs-eff">
+        <div class="e"><div class="v">+222%</div><div class="l">헤지스 명동 매출</div><div class="s">보라 매장 · 방문객 +250%</div></div>
+        <div class="e"><div class="v">3.2배</div><div class="l">신세계 본점 외국인 매출</div><div class="s">미디어아트 → 팝업 동선</div></div>
+        <div class="e"><div class="v">6.5배</div><div class="l">CU 인접 점포 매출</div><div class="s">전주 대비 · 앨범 214배</div></div>
+        <div class="e"><div class="v">26.2억 회</div><div class="l">공연 소셜 노출</div><div class="s">글로벌 시청 1,840만</div></div>
+      </div>
+    </div>
+    <div class="cs rv">
+      <div class="cs-hd"><div class="a">CASE 2 · 2019 – 2025 · 이태원 · 한남</div><div class="b">현대카드 다빈치모텔</div><div class="c">'모텔' 세계관 하나로 이태원 · 한남 일대를 매년 3일간 페스티벌로 — 팬덤 없이 동네를 점령했다.</div></div>
+      <div class="cs-img">
+        <div><img src="assets/img/p4_dvc_img01.webp" alt="다빈치모텔 사인"></div>
+        <div><img src="assets/img/p4_dvc_img02.webp" alt="바이닐앤플라스틱"></div>
+        <div><img src="assets/img/p4_dvc_img03.webp" alt="거리 페스티벌" style="object-position:center 60%"></div>
+      </div>
+      <div class="cs-what">
+        <div class="r"><span>세계관</span><span>60~70년대 캘리포니아 '모터 호텔'</span></div>
+        <div class="r"><span>거리</span><span>한강진역~이태원역 250m 깃발 · 배너 · 아트월</span></div>
+        <div class="r"><span>동선</span><span>5개 공간 순회 · 거리 버스킹 · NFC 쿠폰 23곳</span></div>
+        <div class="r"><span>상권</span><span>스트리트 협업 17 → 36곳 + F&amp;B 16~20곳</span></div>
+      </div>
+      <div class="cs-eff">
+        <div class="e"><div class="v">2배+</div><div class="l">스트리트 협업 매장 매출</div><div class="s">2022 · 현대카드 공식</div></div>
+        <div class="e"><div class="v">6만 명</div><div class="l">3일 관객 (2024)</div><div class="s">2019 파일럿 2.1만 → 약 3배</div></div>
+        <div class="e"><div class="v">36곳</div><div class="l">협업 브랜드 (2024)</div><div class="s">전년 20곳 대비 1.8배</div></div>
+        <div class="e"><div class="v">5분 매진</div><div class="l">티켓 오픈</div><div class="s">2024 · 2025 국내외 전량</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">같은 한남 거리 — MLB 한남점도 움직였다</span><span class="e">PROOF</span><span class="d">작년 다빈치모텔 기간 (9.19 – 21)</span></div>
+    <div class="split">
+      <div class="panel rv">
+        <div class="lbl">MLB 한남점 · 금·토·일 일평균 방문객</div>
+        <div class="bars" id="bars1">
+          <div class="bar-r"><span class="l">겨울 시즌 평균</span><div class="tr"><div class="f" data-w="47.6"></div></div><span class="v">283명</span></div>
+          <div class="bar-r"><span class="l">상시 주말 평균</span><div class="tr"><div class="f" data-w="74.1"></div></div><span class="v">440명</span></div>
+          <div class="bar-r a"><span class="l">다빈치모텔 기간 토·일</span><div class="tr"><div class="f a" data-w="100"></div></div><span class="v">594명</span></div>
+        </div>
+      </div>
+      <div class="metrics rv" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:0">
+        <div class="metric hi"><div class="k">VS 겨울 평시</div><div class="v">2.1배</div><div class="s">주말 일평균 방문</div></div>
+        <div class="metric"><div class="k">3일 매출</div><div class="v">3,462만원</div><div class="s">9.19 – 21 한남점</div></div>
+        <div class="metric"><div class="k">입점객</div><div class="v">1,614명</div><div class="s">3일 합계</div></div>
+        <div class="metric"><div class="k">쿠폰 회수</div><div class="v">316장</div><div class="s">다빈치 쿠폰 · 멤버십 가입 121</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">도시 점령 공식 → 한남에 그대로 적용</span><span class="e">FORMULA</span></div>
+    <div class="eq" data-stagger style="margin-top:0">
+      <div class="it"><div class="a">WORLDVIEW</div><div class="b">세계관 1개</div><div class="c">WINTER CITY</div></div>
+      <div class="op">×</div>
+      <div class="it"><div class="a">STREET</div><div class="b">거리 점령</div><div class="c">OOH 8구좌</div></div>
+      <div class="op">+</div>
+      <div class="it"><div class="a">MOVING</div><div class="b">움직이는 미디어</div><div class="c">게릴라 8인 · 랩핑버스</div></div>
+      <div class="op">+</div>
+      <div class="it"><div class="a">LOCAL</div><div class="b">상권 동참</div><div class="c">제휴 16곳 · 쿠폰 515장</div></div>
+      <div class="op">=</div>
+      <div class="it res"><div class="a">RESULT</div><div class="b">한남 방문 · 다운 매출 ↑</div><div class="c">팝업 + MLB 한남점</div></div>
+    </div>
+    <div class="tbl-wrap rv">
+      <table class="tbl">
+        <tr><th></th><th>BTS THE CITY</th><th>현대카드 다빈치모텔</th><th class="m">MLB WINTER CITY</th></tr>
+        <tr><td class="k">물들이기</td><td>랜드마크 15곳 레드 점등</td><td>모텔 간판 · 깃발 · 아트월</td><td class="m">윈터 키컬러 OOH 8구좌 · 배너</td></tr>
+        <tr><td class="k">움직임</td><td>드론쇼 · 스탬프 랠리</td><td>버스킹 · 5개 공간 순회</td><td class="m">게릴라 RESCUE TEAM · 랩핑버스</td></tr>
+        <tr><td class="k">상권</td><td>파트너 15곳+</td><td>협업 36곳 + F&amp;B 16~20곳</td><td class="m">제휴 16곳 · 쿠폰 515장</td></tr>
+        <tr><td class="k">정점</td><td>광화문 무료 공연</td><td>3일 토크 · 공연</td><td class="m">카리나 방문 행사 11/6</td></tr>
+        <tr><td class="k">효과</td><td>상권 매출 +222% ~ 6.5배</td><td>협업 매장 매출 2배+</td><td class="m">한남 방문 · 다운 매출 ↑ <span class="tbd">목표 TBD</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ai rv">
+    <div class="k">◆ AI INSIGHT</div>
+    <div class="h">세계관은 '있어서' 쓴 게 아니라, 사람을 <em>모으고 · 머물게 하고 · 사게</em> 하려고 만든 장치였다</div>
+    <div class="rows">
+      <div class="r"><div class="a">명분</div><div class="b">BTS '귀환' 서사 · 다빈치 '모텔' — <b>거기에 가야 할 이유</b>를 먼저 만들었다</div></div>
+      <div class="r"><div class="a">점령 · 체류</div><div class="b">일대를 같은 비주얼로 덮고 스탬프 · 쿠폰으로 <b>동선을 길게</b> 설계</div></div>
+      <div class="r"><div class="a">매출</div><div class="b">헤지스 +222% · CU 6.5배 · 협업 매장 2배+ · <b>MLB 한남점 2.1배</b> — 효과는 거리의 매장에서 나왔다</div></div>
+    </div>
+    <div class="c">같은 공식, 같은 한남 거리 — 이번엔 MLB가 직접 세계관의 주인이 된다</div>
+  </div>
+  <div class="bnr rv"><span class="k">SO</span><span class="v">그래서, 한남동 전체를 <em>MLB WINTER CITY</em>로 만들 준비를 했다</span></div>
+
+  <nav class="pnav"><button class="pn prev" data-go="2"><small>PREV</small>03 · 플랜</button><button class="pn next" data-go="4"><small>NEXT</small>05 · 실행</button></nav>
+</section>
+
+<!-- ================= 05 EXECUTION ================= -->
+<section class="section pane" id="s5" data-i="4">
+  <div class="sec-k rv"><span class="n">05</span>EXECUTION · 그래서 이렇게 준비했다</div>
+  <h2 class="rv">사전 기대감 → <em>한남동 점령</em> → 체험과 구매</h2>
+
+  <!-- 5-1 PRE -->
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">사전 · 온라인 유입과 기대감 증폭</span><span class="e">PRE</span><span class="d">10/12 – 11/5</span></div>
+    <div class="g5" data-stagger>
+      <div class="card"><div class="ph tall"><img src="assets/img/p5_pre_img01.webp" alt="@frozenhannam" style="object-position:center 10%"></div><div class="bd"><div class="d">10/12~</div><div class="t">프리퀄 SNS</div><div class="x">카리나 · MLB 없이 '이상 한파' 사건만 먼저 퍼뜨린다</div></div></div>
+      <div class="card"><div class="ph tall"><img src="assets/img/p1_cover_img01.webp" alt="카리나 화보" style="object-position:center 20%"></div><div class="bd"><div class="d">10/26</div><div class="t">카리나 화보 · 티저</div><div class="x">카리나 × 커브패딩 첫 공개 · 공동작업자 PPL</div></div></div>
+      <div class="card pick"><div class="ph tall"><img src="assets/img/p5_pre_img02.webp" alt="공식몰 사전 미션" style="object-position:center 15%"></div><div class="bd"><div class="d">10/29 – 11/5</div><div class="t">게이미피케이션 사전 미션</div><div class="x">RESCUE ID 발급 → 'MLB 패딩' 획득 미션 → 전원 10% 쿠폰</div></div></div>
+      <div class="card"><div class="ph tall"><img src="assets/img/p5_pre_img03.webp" alt="RSVP KIT" style="object-fit:contain;padding:12px"></div><div class="bd"><div class="d">10/29~</div><div class="t">RSVP KIT 바이럴</div><div class="x">익스클루시브 모자 · ID 카드 · 크리스탈 → 카리나 · 매거진 · 인플</div></div></div>
+      <div class="card"><div class="ph tall"><img src="assets/img/p5_gue_img01.webp" alt="게릴라 퍼포먼스" style="object-position:center 30%"></div><div class="bd"><div class="d">11/6 14 – 16시</div><div class="t">게릴라 퍼포먼스</div><div class="x">RESCUE TEAM 8인이 한남 주요 라인 행진 (20분 × 4회)</div></div></div>
+    </div>
+    <div class="panel mt16 rv">
+      <div class="lbl">사전 미션 구조 — 공식몰 회원 전용 · 10/29 ~ 11/5 23:59</div>
+      <div class="steps">
+        <div><span><small>01</small>WINTER CITY 접속</span></div>
+        <div><span><small>02</small>공식몰 로그인</span></div>
+        <div><span><small>03</small>RESCUE ID 설정</span></div>
+        <div><span><small>04</small>ID CARD 발급</span></div>
+        <div class="hi"><span><small>05</small>'MLB 패딩' 획득 미션</span></div>
+        <div class="hi"><span><small>06</small>팝업 맵 공개 + 10% 쿠폰</span></div>
+      </div>
+      <div class="src">리워드 — 참여자 전원 10% 쿠폰 · 상위 랭커 3인 공식몰 포인트 차등 지급</div>
+    </div>
+    <div class="split mt16">
+      <div class="mos rv" style="grid-template-columns:1fr 1fr;grid-template-rows:340px">
+        <div class="c"><img src="assets/img/p5_gue_img01.webp" alt="RESCUE TEAM 행진" style="object-position:center 30%"><div class="cap">RESCUE TEAM 한남 라운딩 (시안)</div></div>
+        <div class="c"><img src="assets/img/p5_gue_img02.webp" alt="SAVE KARINA 피켓" style="object-position:center 25%"><div class="cap">SAVE KARINA 피켓</div></div>
+      </div>
+      <div class="rv">
+        <div class="lbl">GUERRILLA PERFORMANCE</div>
+        <div style="font-size:19px;font-weight:930;letter-spacing:-.045em;margin-top:6px;line-height:1.4">OOH가 '보는' 점령이라면,<br>게릴라는 '움직이는' 점령</div>
+        <div class="kv-list mt12">
+          <div class="r"><span class="a">일시</span><span>11/6(금) 14:00 – 16:00 · 20분 × 4회 (카리나 행사 직전)</span></div>
+          <div class="r"><span class="a">인원</span><span>남성 프로모터 8인 = RESCUE TEAM</span></div>
+          <div class="r"><span class="a">동선</span><span>팝업 · 한남점 · 아벡쉐리 · 세르지오 · 카페거리 — 유동인구 집중 라인</span></div>
+          <div class="r"><span class="a">촬영</span><span>하우스포토 · 매거진 직캠 (데일리패션뉴스 · 아이즈 · 패스트페이퍼)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5-2 OOH -->
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">행사 ① 옥외광고 · 한남 메인 거리 장악</span><span class="e">OOH</span><span class="d">10/26 – 11/25 · 8구좌</span></div>
+    <div class="split r">
+      <div class="rv">
+        <div class="tbl-wrap">
+          <table class="tbl" style="margin-top:0">
+            <tr><th>일정</th><th>구좌</th><th>연계</th></tr>
+            <tr><td class="k">10/26 – 11/8</td><td>헤트라스(더엠빌딩) · 한남 PETIT · 세르지오 타키니</td><td>2막 · 1차</td></tr>
+            <tr><td class="k">10/26 – 11/25</td><td>이태원 디지털 · 한강진역 고정형</td><td>2막 · 1차</td></tr>
+            <tr><td class="k">11/2 – 11/8</td><td>가로등 배너 · QR 게릴라 포스터</td><td>4막 · 2차</td></tr>
+            <tr><td class="k">11/6 – 11/8</td><td>랩핑버스 2대</td><td>5막 · 정점</td></tr>
+          </table>
+        </div>
+        <div class="mos mt12" style="grid-template-columns:1fr;grid-template-rows:auto"><div class="c" style="aspect-ratio:1432/789"><img src="assets/img/p5_ooh_map01.webp" alt="OOH 지도" style="object-fit:contain;background:#fff"></div></div>
+        <div class="src">STREET · 한강진역 – MLB 한남 플래그십 – 현대카드 – 이태원역</div>
+      </div>
+      <div class="mos rv" style="grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:230px 230px">
+        <div class="c"><img src="assets/img/p5_ooh_img01.webp" alt="헤트라스" style="object-position:center 30%"><div class="cap">헤트라스</div></div>
+        <div class="c"><img src="assets/img/p5_ooh_img02.webp" alt="한남 PETIT"><div class="cap">한남 PETIT</div></div>
+        <div class="c"><img src="assets/img/p5_ooh_img03.webp" alt="세르지오 타키니" style="object-position:center 30%"><div class="cap">세르지오 타키니</div></div>
+        <div class="c"><img src="assets/img/p5_ooh_img05.webp" alt="이태원 디지털" style="object-position:center 35%"><div class="cap">한강진역 · 이태원 디지털</div></div>
+        <div class="c"><img src="assets/img/p5_ooh_img07.webp" alt="가로등 배너" style="object-position:center 30%"><div class="cap">가로등 배너 · 게릴라 포스터</div></div>
+        <div class="c"><img src="assets/img/p5_ooh_img08.webp" alt="랩핑버스"><div class="cap">랩핑버스 2대</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5-3 PARTNER -->
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">행사 ② 제휴 · 상권 전체를 WINTER CITY로</span><span class="e">LOCAL PARTNERSHIP</span><span class="d">11/2 – 11/8 · 16곳</span></div>
+    <div class="split">
+      <div class="mos rv" style="grid-template-columns:1fr;grid-template-rows:auto"><div class="c" style="aspect-ratio:827/711"><img src="assets/img/p5_ptn_map01.webp" alt="제휴처 지도"><div class="cap">제휴처 16곳 · 한남 일대 (최종)</div></div></div>
+      <div class="rv">
+        <div class="metrics" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:0">
+          <div class="metric hi"><div class="k">제휴처</div><div class="v">16곳</div><div class="s">카페 10 · 식당 4 · 패션 1 · 굿즈 1</div></div>
+          <div class="metric"><div class="k">제휴 쿠폰</div><div class="v">515장</div><div class="s">럭키드로우 · 11/7~15</div></div>
+          <div class="metric"><div class="k">한남점</div><div class="v">10%</div><div class="s">리플렛 지참 시 할인</div></div>
+        </div>
+        <div class="lbl mt16">PROMOTION KIT</div>
+        <div class="mos mt8" style="grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:150px">
+          <div class="c"><img src="assets/img/p5_ptn_img01.webp" alt="포스터"><div class="cap">포스터 부착</div></div>
+          <div class="c"><img src="assets/img/p5_ptn_img02.webp" alt="미니 POP"><div class="cap">미니 POP</div></div>
+          <div class="c"><img src="assets/img/p5_ptn_img03.webp" alt="리플렛"><div class="cap">리플렛</div></div>
+          <div class="c"><img src="assets/img/p5_ptn_img04.webp" alt="패키징" style="object-position:20% 50%"><div class="cap">아벡쉐리 패키징</div></div>
+        </div>
+        <div class="lbl mt16">KEY PARTNERS</div>
+        <div class="mos mt8" style="grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:130px">
+          <div class="c"><img src="assets/img/p5_ptn_img05.webp" alt="아벡쉐리"><div class="cap">아벡쉐리</div></div>
+          <div class="c"><img src="assets/img/p5_ptn_img06.webp" alt="헤트라스"><div class="cap">헤트라스</div></div>
+          <div class="c"><img src="assets/img/p5_ptn_img07.webp" alt="세르지오 타키니"><div class="cap">세르지오 타키니</div></div>
+          <div class="c"><img src="assets/img/p5_ptn_img08.webp" alt="newmix"><div class="cap">newmix</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="bnr rv"><span class="k">TAKEOVER</span><span class="v">보이는 곳(OOH) · 움직이는 곳(게릴라 · 버스) · 머무는 곳(제휴 16곳) — <em>"지금 이 도시는 MLB WINTER CITY다"</em></span></div>
+  </div>
+
+  <!-- 5-4 KARINA -->
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">행사 ③ 카리나 방문 행사 · 효과 극대화</span><span class="e">KARINA</span><span class="d">11/6(금) 17시 · 현대카드 바이닐앤플라스틱</span></div>
+    <div class="split">
+      <div class="mos rv" style="grid-template-columns:1fr 1fr;grid-template-rows:200px 200px">
+        <div class="c" style="grid-row:span 2"><img src="assets/img/p2_karina_img02.webp" alt="카리나" style="object-position:center 25%"><div class="cap">MLB 앰버서더 카리나</div></div>
+        <div class="c"><img src="assets/img/p5_krn_img01.webp" alt="포토콜 시안"><div class="cap">외부 포토콜 (시안)</div></div>
+        <div class="c"><img src="assets/img/p5_krn_img02.webp" alt="바이닐앤플라스틱"><div class="cap">현대카드 바이닐앤플라스틱</div></div>
+      </div>
+      <div class="rv">
+        <div class="hero" style="margin-top:0;grid-template-columns:1fr;padding:24px 26px">
+          <div style="position:relative;z-index:1">
+            <div class="hero-k">WHY KARINA</div>
+            <div class="hero-title" style="font-size:22px">한남을 WINTER CITY로 만든 뒤,<br>그 한가운데에 <em>구출 엔딩의 주인공</em>을 부른다</div>
+            <div class="hero-copy">카리나가 입은 패딩이 기사 · 인플 콘텐츠로 퍼지고, 다음 날 퍼블릭 방문으로 이어진다.</div>
+          </div>
+        </div>
+        <div class="metrics" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:10px">
+          <div class="metric"><div class="k">포토콜 기자</div><div class="v">30~40</div><div class="s">외부 포토콜</div></div>
+          <div class="metric"><div class="k">인플루언서</div><div class="v">55인</div><div class="s">11/6 #1 · 11/7 #2</div></div>
+          <div class="metric"><div class="k">매거진</div><div class="v">7곳+</div><div class="s">인터뷰 · 스케치</div></div>
+        </div>
+        <div class="kv-list mt12">
+          <div class="r"><span class="a">14 – 16시</span><span>게릴라 퍼포먼스 — 거리 분위기 예열</span></div>
+          <div class="r"><span class="a">17 – 18시</span><span><b>카리나 방문</b> — 외부 포토콜 · 내부 라운딩 · 매거진 촬영</span></div>
+          <div class="r"><span class="a">19 – 21시</span><span>인플루언서 방문 #1 — 메가 인플 20인</span></div>
+          <div class="r"><span class="a">11/7 오전</span><span>인플루언서 방문 #2 → 12시 퍼블릭 오픈</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5-5 POPUP -->
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">행사 ④ 팝업 퍼블릭 운영 · 카리나 구출 여정</span><span class="e">POP-UP</span><span class="d">11/7 – 8 · 12 – 20시 · 102평</span></div>
+    <div class="split">
+      <div class="mos rv" style="grid-template-columns:1fr 1fr;grid-template-rows:230px">
+        <div class="c"><img src="assets/img/p5_pop_img01.webp" alt="팝업 파사드 시안" style="object-fit:contain;background:#f3f6fb"><div class="cap">POP-UP FACADE 시안</div></div>
+        <div class="c"><img src="assets/img/p5_pop_img02.webp" alt="팝업 조닝" style="object-fit:contain;background:#fff"><div class="cap">조닝 · 9개 존</div></div>
+      </div>
+      <div class="metrics rv" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:0">
+        <div class="metric hi"><div class="k">VISIT</div><div class="v">최대 2,400명</div><div class="s">3일 (일반 2,200 + 인플 · 매체 200)</div></div>
+        <div class="metric"><div class="k">STAY</div><div class="v">평균 12분</div><div class="s">동시 최대 50명</div></div>
+        <div class="metric"><div class="k">ZONE</div><div class="v">9개 존</div><div class="s">포토 · 체험 · 게임 · 리워드</div></div>
+        <div class="metric"><div class="k">GWP</div><div class="v">100%</div><div class="s">입장 시 전원 기프트 5,000개</div></div>
+      </div>
+    </div>
+    <div class="g5 mt16" data-stagger>
+      <div class="card"><div class="ph wide"><img src="assets/img/p5_pop_img03.webp" alt="RESCUE ID 발급"></div><div class="bd"><div class="d">01</div><div class="t">RESCUE ID 발급</div><div class="x">RESCUE TEAM 합류 · ID 카드 발급</div></div></div>
+      <div class="card"><div class="ph wide"><img src="assets/img/p5_pop_img04.webp" alt="MAIN CONCEPT ZONE"></div><div class="bd"><div class="d">02</div><div class="t">MAIN CONCEPT ZONE</div><div class="x">윈터시티에 갇힌 카리나 · 메인 포토</div></div></div>
+      <div class="card pick"><div class="ph wide"><img src="assets/img/p1_down_img01.webp" alt="CURVE DOWN ZONE"></div><div class="bd"><div class="d">03 · KEY</div><div class="t">CURVE DOWN ZONE</div><div class="x">커브패딩 직접 착용 · 가벼움과 실루엣 체감</div></div></div>
+      <div class="card"><div class="ph wide"><img src="assets/img/p5_pop_img05.webp" alt="RESCUE MISSION"></div><div class="bd"><div class="d">04</div><div class="t">RESCUE MISSION 1 · 2 · 3</div><div class="x">아이스 룰렛 · 컬링 · 스크래치로 '커브패딩' 획득</div></div></div>
+      <div class="card"><div class="ph wide"><img src="assets/img/p5_pop_img07.webp" alt="LUCKY DRAW"></div><div class="bd"><div class="d">05</div><div class="t">LUCKY DRAW · REWARD</div><div class="x">구출 성공 리워드 · GWP · SNS 인증</div></div></div>
+    </div>
+  </div>
+
+  <!-- 5-6 STORE -->
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">체험 → 구매 · 리워드와 MLB 한남점</span><span class="e">REWARD → PURCHASE</span></div>
+    <div class="split">
+      <div class="rv">
+        <div class="reward">
+          <div class="r hi"><span class="a">1등</span><span>MLB 패딩</span></div>
+          <div class="r"><span class="a">2등</span><span>익스클루시브 아이템 (맨투맨 + 볼캡)</span></div>
+          <div class="r"><span class="a">3등</span><span>익스클루시브 아이템 (볼캡)</span></div>
+          <div class="r"><span class="a">4등</span><span>한남 제휴처 쿠폰</span></div>
+          <div class="r hi"><span class="a">5등</span><span>MLB 한남점 10% 할인 쿠폰 · 무제한</span></div>
+          <div class="r"><span class="a">전원</span><span>RESCUE ID 카드 · 방문객 기프트</span></div>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="mos" style="grid-template-columns:1fr;grid-template-rows:180px"><div class="c"><img src="assets/img/p5_store_img01.webp" alt="MLB 한남 플래그십"><div class="cap">MLB 한남 플래그십 — 쿠폰 · 한정판 구매처</div></div></div>
+        <div class="mos mt8" style="grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:130px">
+          <div class="c"><img src="assets/img/p5_store_img02.webp" alt="볼캡" style="object-fit:contain;background:#fff"><div class="cap">익스클루시브 볼캡 ₩43,000</div></div>
+          <div class="c"><img src="assets/img/p5_store_img03.webp" alt="맨투맨" style="object-fit:contain;background:#fff"><div class="cap">맨투맨 ₩89,000</div></div>
+          <div class="c"><img src="assets/img/p5_store_img04.webp" alt="스탭복" style="object-fit:contain;background:#fff"><div class="cap">RESCUE TEAM 스탭복</div></div>
+        </div>
+        <div class="src">익스클루시브 볼캡 · 맨투맨은 MLB 한남점 한정 판매</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5-7 POST -->
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">사후 · 판매 피크까지 재확산</span><span class="e">POST</span><span class="d">11/13 –</span></div>
+    <div class="g4" data-stagger>
+      <div class="card"><div class="ph"><img src="assets/img/p2_karina_img02.webp" alt="행사 콘텐츠" style="object-position:center 25%"></div><div class="bd"><div class="d">11/13 (TBD)</div><div class="t">카리나 행사 콘텐츠</div><div class="x">포토콜 · 라운딩 · 매거진 촬영분 릴리즈</div></div></div>
+      <div class="card"><div class="ph"><img src="assets/img/p2_world_img02.webp" alt="인플 콘텐츠" style="object-position:center 20%"></div><div class="bd"><div class="d">11/7~</div><div class="t">인플 · 매거진 콘텐츠</div><div class="x">인플 55인 방문기 · 카리나 착장 확산</div></div></div>
+      <div class="card pick"><div class="ph"><img src="assets/img/p2_karina_img01.webp" alt="2차 화보" style="object-position:center 20%"></div><div class="bd"><div class="d">11/19</div><div class="t">카리나 윈터 2차 화보</div><div class="x">커브패딩 재노출 — 두 번째 구매 트리거</div></div></div>
+      <div class="card"><div class="ph"><img src="assets/img/p5_ooh_img06.webp" alt="OOH 확장"></div><div class="bd"><div class="d">11/19 – 29 (안)</div><div class="t">OOH 확장</div><div class="x">강남 또는 성수 — 한남의 비주얼을 다른 상권으로 (이미지 예시)</div></div></div>
+    </div>
+  </div>
+
+  <div class="ai rv">
+    <div class="k">◆ AI INSIGHT</div>
+    <div class="h">사전 3주가 <em>쿠폰 보유 고객</em>을 만들고, 정점 3일이 그 고객을 <em>한남 매장</em>으로 부른다</div>
+    <div class="rows">
+      <div class="r"><div class="a">사전</div><div class="b">게이미피케이션 미션 완료 = 공식몰 회원 + 10% 쿠폰 — <b>행사 전에 구매 의향 고객 풀</b>을 확보</div></div>
+      <div class="r"><div class="a">행사</div><div class="b">OOH · 게릴라 · 제휴 · 카리나가 같은 3일에 겹친다 — <b>한남 전체가 하나의 매장 동선</b></div></div>
+      <div class="r"><div class="a">팝업</div><div class="b">5단계 여정의 3번째가 CURVE DOWN ZONE — <b>모든 방문객이 패딩을 입어보고</b> 나간다</div></div>
+      <div class="r"><div class="a">사후</div><div class="b">2차 화보 · 콘텐츠로 <b>두 번째 구매 트리거</b>를 판매 피크 구간에 배치</div></div>
+    </div>
+    <div class="c">체험의 마지막 칸은 항상 '구매 혜택' — 1등 패딩 · 한남점 10% 쿠폰 · 한정판</div>
+  </div>
+
+  <nav class="pnav"><button class="pn prev" data-go="3"><small>PREV</small>04 · 레퍼런스</button><button class="pn next" data-go="5"><small>NEXT</small>06 · 매출</button></nav>
+</section>
+
+<!-- ================= 06 SALES ================= -->
+<section class="section pane" id="s6" data-i="5">
+  <div class="sec-k rv"><span class="n">06</span>SALES · 결국, 매출</div>
+  <h2 class="rv">회자를 <em>다운 매출</em>로 바꾸는 구조</h2>
+  <p class="sec-lead rv">화제성 · 방문 · 체험은 모두 선행 지표다. 최종 판단 기준은 <b>26FW 다운 매출</b>이며, 이를 위해 온라인 · 오프라인 · 상권 세 갈래의 구매 장치를 깔았다.</p>
+
+  <div class="g3 mt24" data-stagger>
+    <div class="panel"><div class="lbl">ONLINE · 공식몰</div><div style="font-size:18px;font-weight:930;letter-spacing:-.045em;margin-top:6px">사전 미션 → 10% 쿠폰</div><div class="kv-list mt8"><div class="r"><span class="a">유입</span><span>회원 전용 미션 · RESCUE ID</span></div><div class="r"><span class="a">혜택</span><span>참여자 전원 10% 쿠폰 · 상위 3인 포인트</span></div><div class="r"><span class="a">KPI</span><span>유입 · 신규 가입 · 쿠폰 사용 <span class="tbd">TBD</span></span></div></div></div>
+    <div class="panel blue"><div class="lbl">OFFLINE · MLB 한남점</div><div style="font-size:18px;font-weight:930;letter-spacing:-.045em;margin-top:6px">팝업 체험 → 한남점 구매</div><div class="kv-list mt8"><div class="r"><span class="a">혜택</span><span>럭키드로우 10% 쿠폰 (무제한)</span></div><div class="r"><span class="a">한정</span><span>익스클루시브 볼캡 · 맨투맨 한남점 단독</span></div><div class="r"><span class="a">KPI</span><span>행사 주간 매출 · 객수 <span class="tbd">TBD</span></span></div></div></div>
+    <div class="panel"><div class="lbl">LOCAL · 제휴 상권</div><div style="font-size:18px;font-weight:930;letter-spacing:-.045em;margin-top:6px">상권 체류 → 한남점 동선</div><div class="kv-list mt8"><div class="r"><span class="a">혜택</span><span>제휴 쿠폰 515장 · 리플렛 지참 한남점 10%</span></div><div class="r"><span class="a">기간</span><span>제휴 쿠폰 11/7 ~ 11/15</span></div><div class="r"><span class="a">KPI</span><span>제휴 쿠폰 사용률 <span class="tbd">TBD</span></span></div></div></div>
+  </div>
+
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">매출이 오르는 근거</span><span class="e">EVIDENCE</span></div>
+    <div class="split">
+      <div class="panel rv">
+        <div class="lbl">MLB 한남점 · 주말 일평균 방문 시나리오</div>
+        <div class="bars" id="bars2">
+          <div class="bar-r"><span class="l">겨울 시즌 평균</span><div class="tr"><div class="f" data-w="47.6"></div></div><span class="v">283명</span></div>
+          <div class="bar-r a"><span class="l">다빈치모텔 기간 (작년)</span><div class="tr"><div class="f a" data-w="100"></div></div><span class="v">594명</span></div>
+          <div class="bar-r"><span class="l">26FW 행사 주간 목표</span><div class="tr"><div class="f t" data-w="100"></div></div><span class="v" style="color:#d1001f">TBD</span></div>
+        </div>
+        <div class="src">외부 행사만으로 2.1배 — 이번엔 MLB 자체 행사 · 카리나 · 한남점 단독 혜택이 더해진다</div>
+      </div>
+      <div class="metrics rv" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:0">
+        <div class="metric hi"><div class="k">한남점 · 작년 다빈치 기간</div><div class="v">2.1배</div><div class="s">주말 방문 (겨울 평시 대비)</div></div>
+        <div class="metric"><div class="k">같은 거리 협업 매장</div><div class="v">2배+</div><div class="s">다빈치모텔 매장 매출</div></div>
+        <div class="metric"><div class="k">도시 점령 시 상권</div><div class="v">+222%</div><div class="s">BTS · 헤지스 명동 매출</div></div>
+        <div class="metric"><div class="k">카리나 수요</div><div class="v">대기 150명</div><div class="s">25FW 카리나 에디션 · 한남점</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">목표 지표</span><span class="e">GOAL</span><span class="d">대표 지표 = 다운 매출</span></div>
+    <div class="tbl-wrap rv">
+      <table class="tbl" style="margin-top:0">
+        <tr><th>구분</th><th>지표</th><th>기준</th><th class="num">목표</th></tr>
+        <tr><td class="k">SALES</td><td><b>26FW 다운 매출</b> · 커브패딩 판매량</td><td>전년 11월 대비</td><td class="num"><span class="tbd">○○억 TBD</span></td></tr>
+        <tr><td class="k">STORE</td><td>MLB 한남점 매출 · 객수</td><td>행사 주간 vs 전주</td><td class="num"><span class="tbd">TBD</span></td></tr>
+        <tr><td class="k">ONLINE</td><td>공식몰 유입 · 신규 가입 · 쿠폰 사용</td><td>사전 미션 기간</td><td class="num"><span class="tbd">TBD</span></td></tr>
+        <tr><td class="k">VISIT</td><td>팝업 방문</td><td>3일 · 기획안 시뮬레이션</td><td class="num">최대 2,400명</td></tr>
+        <tr><td class="k">BUZZ</td><td>매체 · 인플루언서 콘텐츠</td><td>11/6 ~ 사후</td><td class="num">매체 40+ · 인플 55인</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub">
+    <div class="sub-h rv"><span class="t">예산</span><span class="e">BUDGET</span><span class="d">7개 집행 축</span></div>
+    <div class="split r">
+      <div class="hero rv" style="margin-top:0;grid-template-columns:1fr">
+        <div style="position:relative;z-index:1">
+          <div class="hero-k">TOTAL BUDGET</div>
+          <div class="hero-title" style="font-size:44px">○○억</div>
+          <div class="hero-copy">26FW WINTER CITY · 10/12 – 11/29<br>금액은 추후 일괄 반영</div>
+        </div>
+      </div>
+      <div class="tbl-wrap rv">
+        <table class="tbl" style="margin-top:0">
+          <tr><th>항목</th><th>주요 내용</th><th class="num">금액</th></tr>
+          <tr><td class="k">대관</td><td>현대카드 V&amp;P 1층 · 파사드 · 뮤직라이브러리 광장</td><td class="num"><span class="tbd">TBD</span></td></tr>
+          <tr><td class="k">OOH</td><td>헤트라스 · PETIT · 세르지오 · 이태원 디지털 · 한강진역 · 배너 · 포스터 · 버스</td><td class="num"><span class="tbd">TBD</span></td></tr>
+          <tr><td class="k">공간 제작</td><td>팝업 연출 · 조형물 · ID 카드 발급기 · 한남점 VMD</td><td class="num"><span class="tbd">TBD</span></td></tr>
+          <tr><td class="k">콘텐츠</td><td>티저 · 메인 영상 · 프리퀄 SNS · 사전 미션 페이지</td><td class="num"><span class="tbd">TBD</span></td></tr>
+          <tr><td class="k">셀럽 · 인플</td><td>카리나 행사 · 인플루언서 55인 · 매체 · 게릴라 8인</td><td class="num"><span class="tbd">TBD</span></td></tr>
+          <tr><td class="k">리워드</td><td>GWP · ID 카드 · 럭키드로우 · RSVP KIT · 익스클루시브</td><td class="num"><span class="tbd">TBD</span></td></tr>
+          <tr><td class="k">제휴 · 운영</td><td>제휴 16곳 POP · 패키징 · 스탭복 · 현장 운영 · 안전</td><td class="num"><span class="tbd">TBD</span></td></tr>
+          <tr class="tot"><td>합계</td><td></td><td class="num">○○억</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="kt" data-stagger>
+    <div class="kc"><div class="kn">01 · PURPOSE</div><div class="kv">26FW 다운 매출 활성화</div><div class="ks">행사가 아니라 커브패딩 판매가 목적</div></div>
+    <div class="kc"><div class="kn">02 · IMPACT</div><div class="kv">카리나 × WINTER CITY</div><div class="ks">7주간 전 채널에서 회자되는 서사</div></div>
+    <div class="kc"><div class="kn">03 · TAKEOVER</div><div class="kv">한남동 전체를 점령</div><div class="ks">OOH 8 · 제휴 16 · 게릴라 · 팝업 · 한남점</div></div>
+    <div class="kc"><div class="kn">04 · SALES</div><div class="kv">체험의 끝 = 구매</div><div class="ks">한남점 · 공식몰 · 제휴 3중 구매 장치</div></div>
+  </div>
+
+  <div class="note rv">
+    <b>수치 기준</b> · 팝업 방문 2,400명은 기획안 방문객 시뮬레이션의 최대치(예상)입니다. MLB 한남점 수치는 영업 제공 데이터(2025.9.19~21 다빈치모텔 기간 · 겨울 시즌 금·토·일 평균)입니다. BTS · 다빈치모텔 수치는 각 사 발표 기준이며 비교 기준(전주 · 전년 동기 등)이 서로 다릅니다.
+    <span class="r">다운 매출 · 한남점 · 공식몰 목표와 예산 금액은 추후 일괄 반영 예정(TBD)입니다.</span><br>
+    · 출처 : MLB 26 WINTER CAMPAIGN 기획안 유관부서 공유용(1016) · POP-UP 실물보고 · BTS ARIRANG 케이스 스터디 · 현대카드 다빈치모텔 리서치(the Red 2022.12, 현대차그룹 뉴스 2023 – 2024)
+  </div>
+
+  <nav class="pnav"><button class="pn prev" data-go="4"><small>PREV</small>05 · 실행</button><button class="pn next" data-go="0"><small>FIRST</small>01 · 목적</button></nav>
+</section>
+
+</main>
+
+<script>
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){reveal(e.target);io.unobserve(e.target)}
+  }),{threshold:.08});
+  function reveal(t){t.classList.add('in');
+    if(t.hasAttribute('data-stagger'))[...t.children].forEach((c,i)=>c.style.transitionDelay=(Math.min(i,8)*70)+'ms');
+    t.querySelectorAll('.f[data-w]').forEach(f=>f.style.width=f.dataset.w+'%');}
+  const els=[...document.querySelectorAll('.rv,[data-stagger]')];
+  els.forEach(x=>io.observe(x));
+  function flushVisible(){els.forEach(x=>{if(x.classList.contains('in'))return;const r=x.getBoundingClientRect();if(r.height&&r.top<innerHeight&&r.bottom>0){reveal(x);io.unobserve(x)}})}
+  window.addEventListener('beforeprint',()=>{els.forEach(reveal)});
+  const cover=document.getElementById('cover');
+  const tabs=[...document.querySelectorAll('.tab')];
+  const panes=[...document.querySelectorAll('.pane')];
+  let cur=-1;
+  function show(i,push){
+    i=Math.max(0,Math.min(panes.length-1,i));
+    panes.forEach((p,k)=>p.classList.toggle('on',k===i));
+    tabs.forEach((t,k)=>t.classList.toggle('active',k===i));
+    cur=i;window.scrollTo({top:0,behavior:'instant'});
+    panes[i].querySelectorAll('.rv:not(.in),[data-stagger]:not(.in)').forEach(x=>{io.unobserve(x);io.observe(x)});
+    const t=tabs[i];t.scrollIntoView({block:'nearest',inline:'center'});
+    if(push!==false)history.replaceState(null,'','#'+panes[i].id);
+    hideCover();requestAnimationFrame(()=>{flushVisible();onScroll()});setTimeout(flushVisible,450);
+  }
+  function hideCover(){if(cover.classList.contains('off'))return;cover.classList.add('off');document.body.style.overflow='';setTimeout(()=>cover.classList.add('gone'),600)}
+  function showCover(){cover.classList.remove('gone');requestAnimationFrame(()=>cover.classList.remove('off'));document.body.style.overflow='hidden';history.replaceState(null,'',location.pathname+location.search)}
+  document.addEventListener('click',e=>{
+    const g=e.target.closest('[data-go]'),c=e.target.closest('[data-cover]'),t=e.target.closest('.tab');
+    if(t){e.preventDefault();show(tabs.indexOf(t));return}
+    if(g){e.preventDefault();show(+g.dataset.go);return}
+    if(c){e.preventDefault();showCover()}
+  });
+  document.addEventListener('keydown',e=>{
+    if(!cover.classList.contains('off')&&(e.key==='Enter'||e.key==='ArrowRight')){show(0);return}
+    if(cover.classList.contains('off')&&e.altKey){if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1)}
+  });
+  const prog=document.getElementById('prog');
+  function onScroll(){const h=document.documentElement.scrollHeight-innerHeight;prog.style.transform='scaleX('+(h>0?scrollY/h:0)+')'}
+  addEventListener('scroll',onScroll,{passive:true});
+  const hi=panes.findIndex(p=>'#'+p.id===location.hash);
+  if(hi>=0){cover.classList.add('off','gone');show(hi,false)}
+  else{panes[0].classList.add('on');tabs[0].classList.add('active');cur=0;document.body.style.overflow='hidden'}
+})();
+</script>
+</body>
+</html>
